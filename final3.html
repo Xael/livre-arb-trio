@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Você corre em direção ao quarto, sem saber que na verdade a casa estava condenada, os barulhos que escutou eram do mal estado do telhado que estavam ruindo... nesse momento uma parte do teto cai sob sua cabeça, um animal de pequeno porte cai sob você te encarando como se estivesse te esperando ansiosamente... ele solta um ronronado *prrrr* e em seguida o som que significava que agora ele tinha te adotado *miau*, você ainda meio perplexo apenas sorri e espera que amanhã o dia esteja tranquilo para aproveitar sua estadia com seu novo companheiro... FIM";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "reiniciar" || resposta === "jogar novamente" || resposta === "nova partida" || resposta === "recomeçar" || resposta === "new game") {
+					document.getElementById("resposta").innerHTML = "Certo, vamos tentar novamente!";
+					setTimeout(function() {
+						window.location.href = "index.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "acariciar o gato" || resposta === "brincar" ) {
+					document.getElementById("resposta").innerHTML = "*prrrrr* parece que o gato realmente gostou de mim...";
+					setTimeout(function() {
+						//window.location.href = "sala.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "dormir" || resposta === "cama") {
+					document.getElementById("resposta").innerHTML = "Certo... acho que agora eu posso tentar dormir em paz....";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

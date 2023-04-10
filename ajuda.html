@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Como jogar?</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Olá, caro jogador! Eu vou te explicar como jogar, mas não se preocupe, é muito simples! Você deve apenas digitar o que deseja fazer, tente não se prolongar ou adicionar muitas ações, seja objetivo e use poucas palavras para não confundir a ação e faça um movimento de cada vez, se a ação for permitida ela será executada! Você entendeu?";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			event.preventDefault(); // impede que a quebra de linha seja inserida
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "entendi" || resposta === "sim" || resposta === "obrigado" || resposta === "ok" || resposta === "s") {
+					document.getElementById("resposta").innerHTML = "Certo, então voltaremos ao jogo!";
+					setTimeout(function() {
+						window.location.href = "index.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "não" || resposta === "nao" || resposta === "talvez" || resposta === "sei lá" || resposta === "sei la" || resposta === "n"  ) {
+					document.getElementById("resposta").innerHTML = "Certo, vamos repetir mais uma vez...";
+					setTimeout(function() {
+						window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				} else {
+					document.getElementById("resposta").innerHTML = "Resposta inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

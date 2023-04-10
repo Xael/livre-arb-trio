@@ -1,0 +1,56 @@
+
+
+body {
+	font-family: 'Atari', sans-serif;
+	background-color: #23B833;
+	color: #03411C;
+	font-size: 36px;
+	text-align: center;
+	padding-top: 1px;
+}
+
+#console {
+	font-family: 'Atari', sans-serif;
+	display: inline-block;
+	border: none;
+	background-color: #23B833;
+	color: #03411C;
+	font-size: 36px;
+	line-height: 32px;
+	padding: 16px;
+	cursor: text;
+	border: none;
+	outline: none;
+}
+
+input[type="text"] {
+	border: none;
+	outline: none;
+	font-size: 36px;
+  }
+
+  img {
+	width: 80vw;
+	height: auto;
+	
+  }
+  
+  button {
+	font-family: 'Atari', sans-serif;
+	font-size: 50px;
+	border: none;
+	background-color: #23B833;
+	color: #03411C;
+	cursor: pointer;
+  }
+
+  .container {
+	font-family: 'Atari', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-size: 36px;
+  }
+

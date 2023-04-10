@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogo Livre Arbítrio</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+    @import url('https://fonts.cdnfonts.com/css/atari');
+ 	</style>
+</head>
+<body>
+  <div class="container">
+      <img src="INICIO.png" alt="">
+      <!--<button>INICIAR</button> REMOVI O BOTÃO--> 
+      <label for="escolha">ESCREVA AQUI ↓</label>
+      <!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+      <div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+      </div>
+  </div>  
+  <script src="game.js"></script> <!-- incluir o arquivo .js no final do documento -->
+  <div id="resposta"></div>
+</body>
+</html>

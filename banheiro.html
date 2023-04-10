@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "O banheiro é bem simples, tem um espelho, uma pia, uma privada e um chuveiro, no fundo uma pequena janela, não tem utensilhos...";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "espelho" ) {
+					document.getElementById("resposta").innerHTML = "Somente meu reflexo... *um reflexo da janela passa pelo espelho* Eu acho que vi algo na janela...";
+					setTimeout(function() {
+						//window.location.href = "banheiro.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "janela" || resposta === "abrir janela" || resposta === "olha pela janela") {
+					document.getElementById("resposta").innerHTML = "Essa janela é muito pequena... e não consigo ver nada...";
+					setTimeout(function() {
+						//window.location.href = "sala.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "quebrar a janela" || resposta === "arrebentar a janela" || resposta === "arrancar a janela") {
+					document.getElementById("resposta").innerHTML = "*crack* com muito esforço eu consigo quebrar a janela e passar por ela...";
+					setTimeout(function() {
+						window.location.href = "final.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else if (resposta === "voltar pro quarto" || resposta === "voltar" || resposta === "quarto" || resposta === "cama" || resposta === "sair") {
+					document.getElementById("resposta").innerHTML = "Ok... vou voltar para o quarto... acho que não da pra fazer nada aqui...";
+					setTimeout(function() {
+						window.location.href = "sala.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+
+				} else if (resposta === "privada" || resposta === "xixi" || resposta === "coco" || resposta === "sentar" || resposta === "cagar" || resposta === "urinar" || resposta === "numero 1" || resposta === "numero 2" || resposta === "descarga") {
+					document.getElementById("resposta").innerHTML = "Melhor eu dar descarga... xiii... está sem água...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				
+				} else if (resposta === "lavar as mãos" || resposta === "lavar" || resposta === "pia" || resposta === "águar" || resposta === "chuveiro" || resposta === "tomar banho" ) {
+					document.getElementById("resposta").innerHTML = "Está sem água...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				
+				} else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>
