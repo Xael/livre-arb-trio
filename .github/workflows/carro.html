@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Os quatro pneus do carro estão furados... e ao tentar ligar o carro ele não liga, não tem bateria... eu não consigo me trancar dentro carro... estou ficando sem opções...";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "dormir no carro" || resposta === "ficar no carro" || resposta === "se esconder no carro" || resposta === "porta-malas" ) {
+					document.getElementById("resposta").innerHTML = "Ok... eu posso tentar passar a noite aqui... mesmo que não consiga trancar o carro...";
+					setTimeout(function() {
+						window.location.href = "final2.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "capo" || resposta === "arrumar o carro" || resposta === "empurrar o carro" || resposta === "trocar o pneu" ) {
+					document.getElementById("resposta").innerHTML = "Nem que eu fosse o melhor mecânico eu conseguiria arrumar isso";
+					setTimeout(function() {
+						//window.location.href = "sala.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "casa" || resposta === "voltar") {
+					document.getElementById("resposta").innerHTML = "Voltar não é uma opção... não é seguro lá dentro...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else if (resposta === "celular" || resposta === "ligar para a polícia" || resposta === "chamar ajuda" || resposta === "pedir ajuda") {
+					document.getElementById("resposta").innerHTML = "Meu celular está sem sinal aqui... eu não vou conseguir chamar ajuda...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+
+				} else if (resposta === "ignorar" || resposta === "dormir" || resposta === "voltar" || resposta === "continuar" || resposta === "dormindo") {
+					document.getElementById("resposta").innerHTML = "Será que eu vou conseguir dormir com esse barulho... agora eu estou tão tenso que perdi o sono...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				} else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

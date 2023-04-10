@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Você atualmente esta viajando sozinho, após um longo caminho você chega há uma casa que um parente distante deixou que se hospedasse numa antiga cabana no meio do nada, como foi um longo caminho e uma noite cansativa assim que chegou ao destino apenas trancou tudo e foi para o quarto e deitou na cama. Nem desfez as malas. Seu carro esta lá fora, tudo esta silencioso, até que passado algum tempo dormindo no meio da noite você escuta um barulho vindo lá de fora";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "ignorar" || resposta === "dormir" || resposta === "voltar" || resposta === "continuar" || resposta === "dormindo") {
+					document.getElementById("resposta").innerHTML = "Não deve ser nada, melhor voltar a dormir...";
+					setTimeout(function() {
+						//window.location.href = "index.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "investigar" || resposta === "levantar" || resposta === "acordar" || resposta === "ver" || resposta === "verificar" ) {
+					document.getElementById("resposta").innerHTML = "Melhor eu verificar o que foi esse barulho... mas não consigo ver nada...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "falar" || resposta === "gritar" || resposta === "sussurrar") {
+					document.getElementById("resposta").innerHTML = "Tem alguém aew? *sem resposta*";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else if (resposta === "acender a Luz" || resposta === "acender" || resposta === "luz" || resposta === "iluminar") {
+					document.getElementById("resposta").innerHTML = "*click* Ah.. agora consigo ver...";
+					setTimeout(function() {
+						window.location.href = "investigar.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				} else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

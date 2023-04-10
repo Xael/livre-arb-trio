@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Você agora está do lado de fora da casa, você realmente esta isolado, tem muitas árvores, uma pequena estradinha da qual você veio e seu carro esta bem próximo";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "carro" || resposta === "entrar no carro" || resposta === "abrir o carro") {
+					document.getElementById("resposta").innerHTML = "O carro parece que foi destruído? o quê aconteceu aqui?";
+					setTimeout(function() {
+						window.location.href = "carro.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "trancar a porta" || resposta === "fechar a casa" ) {
+					document.getElementById("resposta").innerHTML = "Certo, eu vou trancar a casa para não me preocupar com isso... *click*";
+					setTimeout(function() {
+						//window.location.href = "sala.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "correr" || resposta === "estrada") {
+					document.getElementById("resposta").innerHTML = "Não tem como eu fugir a pé daqui...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else if (resposta === "celular" || resposta === "ligar para a policia" || resposta === "chamar ajuda" || resposta === "pedir ajuda") {
+					document.getElementById("resposta").innerHTML = "Meu celular ainda está sem sinal aqui...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+
+				} else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

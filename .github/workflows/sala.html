@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Aqui é a sala, ela praticamente está vazia... tem apenas uma porta a minha frente que eu tenho certeza de ter trancado... ou não tranquei? O barulho parece ter parado... mas nesse momento não sei se estou raciocinando direito...";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "porta") {
+					document.getElementById("resposta").innerHTML = "Certo, a porta esta trancada, a chave esta na porta...";
+					setTimeout(function() {
+						window.location.href = "banheiro.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				} else if (resposta === "sair" || resposta === "abrir" || resposta === "destrancar a porta" || resposta === "andar para fora" ) {
+					document.getElementById("resposta").innerHTML = "Vou ver o que está acontencedo lá fora. Apesar que isso é sempre a pior coisa a se fazer em filmes de terror...";
+					setTimeout(function() {
+						window.location.href = "fora.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                } else if (resposta === "voltar para o quarto" || resposta === "quarto") {
+					document.getElementById("resposta").innerHTML = "*crash* algo entrou no quarto, será que pela janela do banheiro? Preciso agir rápido!!!";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+                    
+                } else if (resposta === "lutar" || resposta === "enfrentar" || resposta === "avançar" || resposta === "investigar") {
+					document.getElementById("resposta").innerHTML = "Eu vou descobrir o que entrou no quarto...";
+					setTimeout(function() {
+						window.location.href = "final3.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+
+				} else if (resposta === "ignorar" || resposta === "dormir" || resposta === "voltar" || resposta === "continuar" || resposta === "dormindo") {
+					document.getElementById("resposta").innerHTML = "Será que eu vou conseguir dormir com esse barulho... agora eu estou tão tenso que perdi o sono...";
+					setTimeout(function() {
+						//window.location.href = "ajuda.html";
+					}, 13000); // 10000 milissegundos = 10 segundos
+				} else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>

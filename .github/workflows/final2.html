@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Livre Arbítrio</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="estilo.css">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/atari');
+  </style>
+</head>
+<body>
+	<div id="texto"></div>
+	<script>
+		let texto = "Você passa a noite no carro e acaba acordando ao amanhecer e percebe que tinha deixado as luzes do carro ligado, por esse motivo tinha ficado sem bateria no carro, quando estacionou o carro não percebeu que tinha parado em cima de um monte de madeiras com pregos, por esse motivo furou os pneus, agora com sinal de celular decide chamar um guincho e ir embora, sem descobrir o que tinha ocorrido dentro da casa e deixando sua mala com algumas roupas para trás... FIM";
+		let i = 0;
+		let intervalo = setInterval(function() {
+			document.getElementById("texto").innerHTML += texto.charAt(i);
+			i++;
+			if (i > texto.length) {
+				clearInterval(intervalo);
+			}
+		}, 50);
+	</script>
+
+<div class="container">
+	<label for="escolha">ESCREVA AQUI ↓</label>
+	<br>
+	<!--<input type="text" id="escolha" name="escolha"> removendo caixa de texto-->
+	<div contenteditable="true" id="escolha" style="border: none; outline: none; font-size: 36px; width: 200px;">
+	</div>
+	<div id="resposta"></div>
+
+	<script>
+		const escolha = document.getElementById("escolha"); // obtém a div editável
+		escolha.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") { // se a tecla Enter for pressionada
+				const resposta = escolha.innerText.toLowerCase().trim(); // converte a resposta para minúsculas e remove espaços desnecessários
+				if (resposta === "reiniciar" || resposta === "jogar novamente" || resposta === "nova partida" || resposta === "recomeçar" || resposta === "new game") {
+					document.getElementById("resposta").innerHTML = "Certo, vamos tentar novamente!";
+					setTimeout(function() {
+						window.location.href = "index.html";
+					}, 10000); // 13000 milissegundos = 10 segundos
+				                  
+                } else {
+					document.getElementById("resposta").innerHTML = "Ação inválida, tente novamente.";
+				}
+			}
+		});
+	</script>
